@@ -1,0 +1,230 @@
+:root {
+  --ink: #1B2A4A;
+  --paper: #FBFAF7;
+  --rule: #D8D3C7;
+  --muted: #6B6558;
+  --pass: #2F6F4E;
+  --fail: #A13D3D;
+  --gold: #B8863B;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.5;
+}
+
+.page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 48px 24px 80px;
+}
+
+/* Header */
+
+.masthead {
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: 20px;
+  margin-bottom: 40px;
+}
+
+.masthead h1 {
+  font-family: 'Source Serif 4', serif;
+  font-weight: 700;
+  font-size: 2.25rem;
+  margin: 0 0 8px;
+}
+
+.subtitle {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1rem;
+  max-width: 60ch;
+}
+
+h2 {
+  font-family: 'Source Serif 4', serif;
+  font-weight: 600;
+  font-size: 1.3rem;
+  margin: 0 0 16px;
+}
+
+/* Entry form */
+
+.entry {
+  margin-bottom: 48px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.entry-form {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px 24px;
+  align-items: end;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field label {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.field input {
+  border: none;
+  border-bottom: 1px solid var(--rule);
+  background: transparent;
+  padding: 8px 2px;
+  font-size: 1rem;
+  color: var(--ink);
+  font-family: inherit;
+}
+
+.field input:focus {
+  outline: none;
+  border-bottom: 2px solid var(--gold);
+}
+
+.btn-primary {
+  grid-column: span 2;
+  justify-self: start;
+  background: var(--ink);
+  color: var(--paper);
+  border: none;
+  padding: 12px 28px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  cursor: pointer;
+  border-radius: 2px;
+  margin-top: 8px;
+}
+
+.btn-primary:hover { background: #14213A; }
+
+/* Records */
+
+.records-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 16px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+#search {
+  border: none;
+  border-bottom: 1px solid var(--rule);
+  background: transparent;
+  padding: 6px 2px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  color: var(--ink);
+  width: 220px;
+}
+#search:focus { outline: none; border-bottom: 2px solid var(--gold); }
+
+.table-wrap { overflow-x: auto; }
+
+table {
+  width: 100%;
+  min-width: 720px;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+thead th {
+  text-align: left;
+  font-weight: 600;
+  color: var(--muted);
+  border-bottom: 1px solid var(--ink);
+  padding: 10px 8px;
+  white-space: nowrap;
+}
+
+tbody td {
+  padding: 12px 8px;
+  border-bottom: 1px solid var(--rule);
+}
+
+tbody tr.pass { border-left: 3px solid var(--pass); }
+tbody tr.fail { border-left: 3px solid var(--fail); }
+
+.status-pass { color: var(--pass); font-weight: 600; }
+.status-fail { color: var(--fail); font-weight: 600; }
+
+.delete-btn {
+  background: none;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 0.85rem;
+  text-decoration: underline;
+  font-family: inherit;
+  padding: 0;
+}
+.delete-btn:hover { color: var(--fail); }
+
+.empty-state {
+  color: var(--muted);
+  padding: 24px 0;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+/* Summary footer */
+
+.summary {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 2px solid var(--ink);
+  flex-wrap: wrap;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 24px;
+  position: relative;
+}
+.stat:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: -24px;
+  top: 4px;
+  bottom: 4px;
+  width: 1px;
+  background: var(--rule);
+}
+
+.stat-value {
+  font-family: 'Source Serif 4', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+@media (max-width: 700px) {
+  .entry-form { grid-template-columns: repeat(2, 1fr); }
+  .btn-primary { grid-column: span 2; }
+}
